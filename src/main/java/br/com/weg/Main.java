@@ -10,6 +10,7 @@ import br.com.weg.repository.FuncionarioRepository;
 import br.com.weg.repository.PratoRepository;
 import br.com.weg.service.FuncionarioService;
 import br.com.weg.service.PratoService;
+import br.com.weg.service.VendaService;
 import br.com.weg.view.FuncionarioView;
 import br.com.weg.view.MenusAndHelpers;
 import br.com.weg.view.PratoView;
@@ -23,7 +24,7 @@ public class Main {
         PratoService pratoService = new PratoService(new PratoRepository(), new PratoMapper());
         FuncionarioController funcionarioController = new FuncionarioController(new FuncionarioView(),funcionarioService, menusAndHelpers);
         PratoController pratoController = new PratoController(new PratoView(),pratoService, menusAndHelpers);
-        VendaController vendaController = new VendaController(new PratoView(), new VendaView(), pratoService, menusAndHelpers );
+        VendaController vendaController = new VendaController(new PratoView(), new VendaView(), pratoService, new VendaService(new PratoRepository(), new PratoMapper()), menusAndHelpers );
 
         MainController mainController = new MainController(menusAndHelpers, funcionarioController, pratoController, vendaController);
 

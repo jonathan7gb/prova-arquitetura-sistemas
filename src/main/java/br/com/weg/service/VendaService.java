@@ -1,5 +1,7 @@
 package br.com.weg.service;
 
+import br.com.weg.dto.PratoRequestDTO;
+import br.com.weg.dto.PratoResponseDTO;
 import br.com.weg.mapper.PratoMapper;
 import br.com.weg.model.Prato;
 import br.com.weg.repository.PratoRepository;
@@ -16,7 +18,8 @@ public class VendaService {
         this.pratoMapper = pratoMapper;
     }
 
-    public void vender(Prato prato, int quantidade, IEntrega iEntrega, IPagamento iPagamento, int parcelas){
+    public void vender(PratoRequestDTO pratoDto, int quantidade, IEntrega iEntrega, IPagamento iPagamento, int parcelas){
+        Prato prato = pratoMapper.toEntity(pratoDto);
         double valor = prato.getPreco() * quantidade;
 
         valor = iEntrega.valorcomentrega(valor);
