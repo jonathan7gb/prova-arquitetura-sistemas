@@ -68,6 +68,10 @@ public class PratoView {
         return LerDados.lerInteger("Quantidade a somar no estoque do prato: ");
     }
 
+    public int quantidadeVenda(){
+        return LerDados.lerInteger("Quantidade do prato: ");
+    }
+
     public void listarEstoque(List<PratoResponseDTO> lista){
         System.out.println("\n - LISTAR ESTOQUE -");
         for(PratoResponseDTO p : lista){

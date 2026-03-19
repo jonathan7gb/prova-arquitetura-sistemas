@@ -1,10 +1,8 @@
 package br.com.weg.service;
 
-import br.com.weg.dto.FuncionarioRequestDTO;
 import br.com.weg.dto.PratoRequestDTO;
 import br.com.weg.dto.PratoResponseDTO;
 import br.com.weg.mapper.PratoMapper;
-import br.com.weg.model.Funcionario;
 import br.com.weg.model.Prato;
 import br.com.weg.repository.PratoRepository;
 
@@ -43,7 +41,12 @@ public class PratoService {
     }
 
     public PratoResponseDTO buscarPratoPorCodigo(int codigo){
-        return pratoMapper.toDto(pratoRepository.buscarPratoPorCodigo(codigo));
+        Prato prato = pratoRepository.buscarPratoPorCodigo(codigo);
+
+        if(prato == null){
+            throw new RuntimeException("Nenhum prato encontrado!");
+        }
+        return pratoMapper.toDto(prato);
     }
 
     public void editarPrato(int codigo, PratoRequestDTO pratoEditado){
@@ -58,6 +61,14 @@ public class PratoService {
 
         if(!adicionado){
             throw new RuntimeException("Erro ao adicionar quantidade ao estoque");
+        }
+    }
+
+    public void verificarEstoque(int codigo, int quantidade){
+        Prato prato = pratoRepository.buscarPratoPorCodigo(codigo);
+
+        if(prato.getEstoque() < quantidade){
+            throw new RuntimeException("Quantidade Insuficiente. Tente novamente.");
         }
     }
 }

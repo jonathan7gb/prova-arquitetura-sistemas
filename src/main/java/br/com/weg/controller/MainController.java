@@ -7,11 +7,13 @@ public class MainController {
     private final MenusAndHelpers menusAndHelpers;
     private final FuncionarioController funcionarioController;
     private final PratoController pratoController;
+    private final VendaController vendaController;
 
-    public MainController(MenusAndHelpers menusAndHelpers, FuncionarioController funcionarioController, PratoController pratoController) {
+    public MainController(MenusAndHelpers menusAndHelpers, FuncionarioController funcionarioController, PratoController pratoController, VendaController vendaController) {
         this.menusAndHelpers = menusAndHelpers;
         this.funcionarioController = funcionarioController;
         this.pratoController = pratoController;
+        this.vendaController = vendaController;
     }
 
     public void startSystem(){
@@ -33,7 +35,9 @@ public class MainController {
                 case 4 -> {
                     pratoController.EstoqueController();
                 }
-                case 5 -> {}
+                case 5 -> {
+                    vendaController.VendaController();
+                }
                 case 0 -> {
                     return;
                 }
