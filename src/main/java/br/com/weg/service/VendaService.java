@@ -28,8 +28,8 @@ public class VendaService {
         System.out.println("\n - DETALHES DA VENDA -");
         System.out.println("PRATO: ["+ prato.getCodigo() +"] " + prato.getNome());
         System.out.println("QUANTIDADE: " + quantidade);
-        System.out.println("FORMA DE PAGAMENTO: " + iPagamento.getClass().getName());
-        System.out.println("MÉTODO DA ENTREGA: " + iEntrega.getClass().getName());
+        System.out.println("FORMA DE PAGAMENTO: " + iPagamento.getClass().getCanonicalName());
+        System.out.println("MÉTODO DA ENTREGA: " + iEntrega.getClass().getCanonicalName());
         System.out.println("VALOR FINAL: "+ parcelas+"x R$" + (valor/parcelas));
     }
 }
